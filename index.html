@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peddy</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="w-11/12 mx-auto py-3 flex justify-between items-center navbar bg-base-100">
+            <!-- Logo and brand -->
+            <div class="flex items-center gap-2">
+                <img src="images/logo.webp" alt="Peddy Logo" class="">
+                <div class="logo text-xl font-bold">Peddy</div>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex gap-6 items-center">
+                <a href="#" class="text-gray-600">Home</a>
+                <a href="#" class="text-gray-600">Shop</a>
+                <a href="#" class="text-gray-600">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button class="text-gray-600" onclick="toggleMenu()">☰</button>
+            </div>
+            <!-- Mobile Menu  -->
+            <div id="mobile-menu" class="hidden flex flex-col items-start gap-4 mt-2 md:hidden w-full bg-base-100 p-4">
+                <a href="#" class="text-gray-600">Home</a>
+                <a href="#" class="text-gray-600">Shop</a>
+                <a href="#" class="text-gray-600">Contact</a>
+            </div>
+
+            <!-- Profile Section -->
+            <div class="flex-none">
+                <div class="dropdown dropdown-end">
+                    <div tabindex="0" class="btn btn-ghost btn-circle avatar">
+                        <div class="w-10 rounded-full">
+                            <img class="" src="images/icon.png" alt="Profile Picture">
+                        </div>
+                    </div>
+                    <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        <li><a class="justify-between">Profile <span class="badge">New</span></a></li>
+                        <li><a>Settings</a></li>
+                        <li><a>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <section class="w-full md:w-6/12 mx-auto py-10 text-center px-4">
+        <p class="text-md text-gray-500 mb-3">Bringing Families Together ❤️</p>
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">Your Path to Adoption <br> Starts Here</h1>
+        <p class="text-gray-600 mb-6">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        <button class="btn bg-[#008080] text-white mb-6" id="viewMoreBtn">View More</button> 
+        <div class="flex justify-center">
+            <img src="images/pet.webp" alt="Dog and Cat" class="max-w-lg w-full">
+        </div>
+    </section>
+
+    <!-- Main Section (Add ID to scroll to this section) -->
+    <main id="mainSection" class="w-full md:w-11/12 mx-auto py-10 px-4">
+        <section class="w-full md:w-6/12 mx-auto py-10 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Adopt Your Best Friend</h1>
+            <p class="text-gray-600 mb-6">It is a long established fact that a reader will be distracted by the readable content of a page <br> when looking at its layout.</p>
+        </section>
+
+        <nav class="w-full mx-auto py-10">
+            <div id="categories" class="pb-10 flex flex-wrap gap-7 justify-center"></div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                <h3 class="text-xl font-bold mb-3 md:mb-0">Best Deal For You</h3>
+                <button class="btn bg-[#008080] text-white" id="sortByPrice">Sort by Price</button>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between w-full">
+                <!-- Pets Card Grid -->
+                <section id="pets" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full md:w-9/12"></section>
+
+                <!-- Liked Pets Thumbnail Section -->
+                <section id="likedPets" class="grid grid-cols-2 gap-3 w-full md:w-60 border border-gray-200 rounded-lg p-2"></section>
+            </div>
+        </nav>
+    </main>
+
+    <!-- Modal structure -->
+    <div id="petDetailsModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg w-11/12 max-w-lg p-6 relative">
+            <button id="closeModalBtn" class=""></button>
+            <div id="modalContent">
+            </div>
+        </div>
+    </div>
+
+    <!-- Spinner -->
+    <div id="spinner" class="fixed inset-0 flex items-center justify-center bg-white bg-opacity-75 hidden z-50">
+        <div class="animate-spin rounded-full h-24 w-24 border-t-4 border-b-4 border-teal-500"></div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-[#121721] py-10 text-white">
+        <div class="w-11/12 mx-auto justify-between items-center grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="images/logo.webp" alt="Peddy Logo" class="w-6 h-6">
+                    <h4 class="text-lg font-bold">Peddy</h4>
+                </div>
+                <p>Location: av. Washington 165, NY CA 54003</p>
+                <p>Phone: +31 85 964 47 25</p>
+                <p>Email: info@yourdomain.com</p>
+                <p>Opening hours: 9:00 AM - 5:00 PM</p>
+                <div class="flex gap-4 mt-4">
+                    <a href="#"><img src="images/facebook.png" alt="Facebook" class="w-6 h-6"></a>
+                    <a href="#"><img src="images/x.png" alt="X (formerly Twitter)" class="w-6 h-6"></a>
+                    <a href="#"><img src="images/youtube.png" alt="YouTube" class="w-6 h-6"></a>
+                    <a href="#"><img src="images/instagram.png" alt="Instagram" class="w-6 h-6"></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-bold mb-4">Useful Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gray-400">Home</a></li>
+                    <li><a href="#" class="hover:text-gray-400">About Us</a></li>
+                    <li><a href="#" class="hover:text-gray-400">Animals</a></li>
+                    <li><a href="#" class="hover:text-gray-400">Foundation</a></li>
+                    <li><a href="#" class="hover:text-gray-400">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-bold mb-4">Drop a Message</h4>
+                <form>
+                    <input type="email" placeholder="Enter your email" class="input input-bordered w-full md:w-1/2 mb-4 rounded bg-[#1F2C37] text-gray-300 placeholder-gray-500 px-4 py-2">
+                    <button type="submit" class="btn w-full md:w-1/2 bg-[#008080] text-white py-2 rounded-md">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script/pets.js"></script>
+    <script>
+        document.getElementById('viewMoreBtn').addEventListener('click', function() {
+            document.getElementById('mainSection').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
